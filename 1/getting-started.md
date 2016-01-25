@@ -72,14 +72,12 @@ This tells Docker to:
   * Install the Python dependencies.
   * Set the default command for the container to `python app.py`
 
-For more information on how to write Dockerfiles, see the [Docker user guide](https://docs.docker.com/userguide/dockerimages/#building-an-image-from-a-dockerfile) and the [Dockerfile reference](http://docs.docker.com/reference/builder/).
 
 1. Build the image.
  
 ```
 docker build -t web .
 ```
-
 
 This command builds an image named `web` from the contents of the current directory. The command automatically locates the `Dockerfile`, `app.py`, and `requirements.txt` files.
 
