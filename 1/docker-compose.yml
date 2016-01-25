@@ -1,8 +1,17 @@
 web:
   image: "web:latest"
-  ports:
-   - "5000:5000"
   links:
    - redis
+  expose:
+   - 80
 redis:
   image: redis
+lb:
+  image: tutum/haproxy
+  links:
+   - web
+  ports:
+   - "80:80"
+  environment:
+   - BACKEND_PORT=80
+   - BALANCE=roundrobin
