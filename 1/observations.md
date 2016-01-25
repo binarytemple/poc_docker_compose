@@ -104,3 +104,30 @@ ff02::2	ip6-allrouters
 ```
 
 That seems ok. But needing to restart the instance is a minor bother. 
+
+
+# With docker swarm
+
+With a docker swarm already created, `docker-compose` will operate transparently upon swarm components provided
+you have created the environment appropriately.
+
+To expose the swarm environmental variables you will need to execute the following:
+
+```
+eval $(docker-machine env swarm-master --swarm)
+```
+
+After doing so we can observe from the `docker ps` that the instances are running within the docker swarm:
+
+```
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS   NAMES
+a4f253b8e9b9        packetops/web:latest   "/bin/sh -c 'python /"   37 minutes ago      Up 5 minutes        80/tcp  swarm-master/1_web_5
+c07271f3fa82        packetops/web:latest   "/bin/sh -c 'python /"   37 minutes ago      Up 4 minutes        80/tcp  swarm-master/1_web_4
+3300a5fc1ae8        packetops/web:latest   "/bin/sh -c 'python /"   37 minutes ago      Up 4 minutes        80/tcp  swarm-master/1_web_3
+7ccd55b3678e        packetops/web:latest   "/bin/sh -c 'python /"   3 hours ago         Up 4 minutes        80/tcp  swarm-master/1_web_2
+
+```
+
+Continued on [StackOverflow](http://stackoverflow.com/questions/35002493/docker-swarm-and-docker-compose-how-to-dynamically-add-nodes-and-have-them-resol)
+
+
