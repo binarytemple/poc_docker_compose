@@ -1,0 +1,25 @@
+cassandra:
+  image: "cassandra:2.2.3"
+  container_name: cassandra
+  expose:
+   - 80
+   - 7001
+   - 7000
+   - 7199
+   - 9042
+   - 9160
+
+elasticsearch:
+  image: "elasticsearch:1.5.2"
+  container_name: elasticsearch
+  expose:
+   - 9200
+   - 9300
+
+# environment:
+#    - BACKEND_PORT=80
+#    - BALANCE=roundrobin
+
+#  CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                         NAMES
+#  56e0633147ce        elasticsearch:1.5.2   "/docker-entrypoint.s"   27 minutes ago      Up 27 minutes       9200/tcp, 9300/tcp                            elasticsearch
+#  87bf96899396        cassandra:2.2.3       "/docker-entrypoint.s"   27 minutes ago      Up 27 minutes       7000-7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp   cassandra
