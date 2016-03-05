@@ -1,0 +1,15 @@
+version: '2'
+services:
+  web:
+    build: .
+    command: php -S 0.0.0.0:8080 -t /code/wordpress/
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    #volumes:
+    #  - wordpress:/wordpress
+  db:
+    image: orchardup/mysql
+    environment:
+      MYSQL_DATABASE: wordpress
